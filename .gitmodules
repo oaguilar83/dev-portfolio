@@ -1,0 +1,6 @@
+[submodule "dev-portfolio-frontend"]
+	path = dev-portfolio-frontend
+	url = https://github.com/oaguilar83/dev-portfolio-frontend.git
+[submodule "dev-portfolio-iac"]
+	path = dev-portfolio-iac
+	url = https://github.com/oaguilar83/dev-portfolio-iac.git
