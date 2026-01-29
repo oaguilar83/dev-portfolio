@@ -16,10 +16,10 @@ dev-portfolio/
 ├── dev-portfolio-frontend/    # React + Vite portfolio website
 │   ├── src/                   # React components and styles
 │   ├── public/                # Static assets
-│   └── ...
+│   └── .github/workflows/     # CI/CD pipelines
 └── dev-portfolio-iac/         # Infrastructure automation
-    ├── terraform/             # AWS resource provisioning
-    └── ansible/               # Server configuration
+    ├── terraform/             # AWS resources (EC2, Route53, Security Group, Key Pair)
+    └── ansible/playbooks/     # Server configuration (Nginx, TLS)
 ```
 
 ## Tech Stack
@@ -27,12 +27,12 @@ dev-portfolio/
 ### Frontend
 - React 19
 - Vite 7
-- Material UI (MUI)
+- Material UI (MUI) + MUI Icons
 - EmailJS
-- CSS Modules
+- GitHub Actions (CI/CD)
 
 ### Infrastructure
-- Terraform (AWS: EC2, Route53, Security Groups)
+- Terraform (AWS: EC2, Route53, Security Groups, Key Pair)
 - Ansible (Nginx, Certbot/Let's Encrypt)
 - Ubuntu 24.04 LTS
 
@@ -68,12 +68,13 @@ npm run dev
 ### Deploy Infrastructure
 
 ```bash
-# Provision AWS resources
+# Provision AWS resources (generates SSH key automatically)
 cd dev-portfolio-iac/terraform
 terraform init && terraform apply
 
 # Configure server
 cd ../ansible
+export SSH_PRIVATE_KEY_FILE=../terraform/dev-portfolio-key.pem
 ansible-playbook -i inventory playbooks/install_nginx.yml
 ansible-playbook -i inventory playbooks/install_tls_cert.yml
 ```
