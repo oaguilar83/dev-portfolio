@@ -1,6 +1,6 @@
 # dev-portfolio
 
-A comprehensive developer portfolio project showcasing full-stack development and infrastructure automation skills. This repository aggregates all related repositories as Git submodules.
+A comprehensive developer portfolio project showcasing frontend development and infrastructure automation skills. This repository aggregates all related repositories as Git submodules.
 
 ## Repositories
 
